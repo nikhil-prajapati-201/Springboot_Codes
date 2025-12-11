@@ -1,5 +1,7 @@
 package com.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,22 @@ public class EmployeeService {
 		return ed.insertData(e);
 	}
 	
-	public String getData(int id) {
-		return ed.getData(id);
+	public String deleteData(int id) {
+		return ed.deletetMethod(id);
+	}
+
+	public String updateData(Employee e, int id) {
+		 return ed.updateData(e,id);
+
+	}
+
+	public Employee getData(int id) {
+		Employee e = ed.getData(id);
+		return e;
+	}
+	
+	public List<Employee> getAllData() {
+		List<Employee> list= ed.getAllData();
+		return list;
 	}
 }
