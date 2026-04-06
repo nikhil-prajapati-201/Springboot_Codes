@@ -1,0 +1,52 @@
+
+package com.finance.dashboard.entity;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "transactions")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Transaction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private BigDecimal amount;
+
+    @Column(nullable = false)
+    private String type; // INCOME or EXPENSE
+
+    @Column(nullable = false)
+    private String category;
+
+    @Column(nullable = false)
+    private LocalDate date;
+
+    private String notes;
+
+    @Column(nullable = false)
+//    private boolean deleted = false; // soft delete
+    
+    private boolean deleted;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+}
